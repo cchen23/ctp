@@ -1,0 +1,6 @@
+pandas
+networkx
+tensorflow
+tokenizers
+transformers
+matplotlib
