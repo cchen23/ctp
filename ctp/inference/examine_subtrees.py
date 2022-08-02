@@ -14,6 +14,7 @@ import sys
 import copy
 
 sys.path.insert(0, '../')
+sys.path.insert(0, '../../')
 
 from metrics import compute_edge_metrics
 from networkx.drawing.nx_agraph import graphviz_layout
@@ -207,17 +208,17 @@ def run_inference_subtree(tree_id, subtrees_dict, sentences, results, subtrees_i
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--experiment-name", type=str, help='{experiment-name}.json in experiment_configs/ contains filenames and parameters for the experiment.')
-    parser.add_argument("--results-dir", type=str, default="../outputs/results", help='Directory in which network logits are saved.')
+    parser.add_argument("--results-dir", type=str, default="../../outputs/results", help='Directory in which network logits are saved.')
     parser.add_argument(
         "--sentences-dir",
         type=str,
-        default="../datasets/texeval/generated_training_pairs",
+        default="../../datasets/generated_training_pairs",
         help='Directory in which input pairs are saved.'
     )
     parser.add_argument('--wordnet-dir',
             type=str,
             help='Directory containing wordnet csv files',
-            default='../datasets/data_creators/df_csvs')
+            default='../../datasets/data_creators/df_csvs')
     parser.add_argument("--prediction-metric-type", type=str, choices=["ancestor", "parent"], default="ancestor", help='Whether to use ancestor or parent F1 predictions (should use ancestor to compare to other work.')
     parser.add_argument("--softmax-temp", type=float, default=1, help='Temperature parameter for softmax function over network prediction logits.')
     parser.add_argument(
@@ -244,9 +245,9 @@ if __name__ == "__main__":
 
     results_filename = results_info_config[
         "results_filename"
-    ].format(epoch_num=args.epoch_num)
+    ]
     sentences_filename = results_info_config["test_filenames"]
-    wordnet_filename = results_info_config["wordnet_filename"]
+    wordnet_filename = results_info_config["test_wordnet_filenames"]
 
     sentences, results, wordnet_df = get_sentences_results_wordnet_df(
             wordnet_filepath=os.path.join(args.wordnet_dir, wordnet_filename),
