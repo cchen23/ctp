@@ -14,20 +14,21 @@ pip install -r requirements.txt
 ## Getting Started
 To download the data. Download the [data](https://drive.google.com/file/d/1r0koth-KO1HVyBvphCwbDSrvYDil4KD_/view?usp=sharing). Place the `generated_training_pairs` folder in `wordnet_reconstruction/datasets/`, and place the `df_csvs` folder in `wordnet_reconstruction/datasets/data_creators/df_csvs`.
 
-To train a model using the configuration file `experiment_name`, run:
+The CTP approach consists of two steps: parenthood prediction (described in Section 2.2 of our paper) and tree reconciliation (described in Section 2.3 of our paper).
+
+To perform the parenthood prediction step for a model with the configuration file `experiment_name`, run:
 ```
 cd scripts/
 python run_finetuning_hypernym_classification_multidomain.py \
   --experiment-name [experiment_name]
 ```
 
-To evaluate the tree level metrics, run:
+To perform the tree reconciliation step, run:
 
 ```
 cd ctp/inference/
 python examine_subtrees.py --experiment-name [experiment_name] \
-  --prediction-metric-type ancestor --reconciliation-method \
-  [reconciliation_method] --do-test
+  --prediction-metric-type ancestor
 ```
 
 ## Recreating the Data.
