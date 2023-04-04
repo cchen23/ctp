@@ -1,5 +1,5 @@
 # ctp
-Code for [_Constructing Taxonomies from Pretrained Language Models_](https://arxiv.org/abs/2010.12813), presented at NAACL 2021.
+Code for [_Constructing Taxonomies from Pretrained Language Models_](https://aclanthology.org/2021.naacl-main.373.pdf), presented at NAACL 2021.
 
 ## Installation
 
